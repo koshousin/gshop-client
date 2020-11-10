@@ -1,21 +1,8 @@
-# gshop-client
+# day 1 
++ 使用脚手架创建了一个项目
++ 配置开发前的准备 （git 、 eslint ...）
++ 拆分路由 --> 配置、注册、使用路由 --> 拆分静态页面（html -> css -> 图片资源等）
 
-> A Vue.js project
+***skill*** : 使用vue绑定class 可以采用对象方式如 :class="{on:'/search' === $route.path}
 
-## Build Setup
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
