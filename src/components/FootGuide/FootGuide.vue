@@ -30,9 +30,6 @@
 <script>
 export default {
   name: "FootGuide" ,
-  data() {
-    return
-  } ,
   methods : {
     goto : function(link) {
       this.$router.replace(link)

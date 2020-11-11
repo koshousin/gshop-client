@@ -6,7 +6,7 @@
         </a>
       </header>
       <section class="profile-number">
-        <a href="javascript:" class="profile-link">
+        <RouterLink to="/login" class="profile-link">
           <div class="profile_image">
             <i class="iconfont icon-person"></i>
           </div>
@@ -22,7 +22,7 @@
           <span class="arrow">
               <i class="iconfont icon-jiantou1"></i>
             </span>
-        </a>
+        </RouterLink>
       </section>
       <section class="profile_info_data border-1px">
         <ul class="info_data_list">
@@ -96,15 +96,16 @@
 </template>
 
 <script>
-export default {
-name: "Profile"
-}
+  export default {
+    name: "Profile"
+  }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
   @import "../../common/stylus/mixins.styl"
   .profile //我的
     width 100%
+    overflow hidden
     .header
       background-color #02a774
       position fixed

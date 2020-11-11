@@ -8,6 +8,7 @@ import Home from "../pages/Home/Home";
 import Order from '../pages/Order/Order'
 import Profile from '../pages/Profile/Profile'
 import Search from '../pages/Search/Search'
+import Login from "../pages/Login/Login";
 
 //声明使用
 Vue.use(VueRouter)
@@ -17,20 +18,36 @@ export default new VueRouter({
   routes : [
     {
       path : '/home',
-      component : Home
+      component : Home ,
+      meta : {
+        showFooter : true
+      }
     } ,
     {
       path : '/order' ,
-      component : Order
+      component : Order ,
+      meta : {
+        showFooter : true
+      }
     } ,
     {
-      path : '/Profile' ,
-      component : Profile
+      path : '/profile' ,
+      component : Profile ,
+      meta : {
+        showFooter : true
+      }
     } ,
     {
-      path : '/Search' ,
-      component : Search
+      path : '/search' ,
+      component : Search ,
+      meta : {
+        showFooter : true
+      }
     } ,
+    {
+      path : '/login',
+      component : Login
+    },
     // 默认显示页面
     {
       path : '/' ,
