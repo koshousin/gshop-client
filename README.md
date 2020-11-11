@@ -5,7 +5,7 @@
 
 ***skill*** : 使用vue绑定class 可以采用对象方式如 :class="{on:'/search' === $route.path}
 
-#day 2
+# day 2
 + 使用swiper 做轮播效果（6.0版本以上不显示分页）
 + 使用 slot 来进行组件标签通信（相当于传递一个标签）
 + 测试了后台接口，封装了Ajax函数，根据 api 写了前台接口函数
