@@ -9,10 +9,14 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   export default {
     name: "HeaderTop" ,
     props : {
       title : String
+    } ,
+    computed :{
+      ...mapState(['address'])
     }
   }
 </script>

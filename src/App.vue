@@ -6,6 +6,8 @@
 </template>
 
 <script>
+  import {mapActions} from 'vuex'
+
   import FootGuide from "./components/FootGuide/FootGuide";
   import {reqFoodTypes} from './api'
 
@@ -14,8 +16,11 @@
       FootGuide
     } ,
     mounted() {
-      reqFoodTypes().then(value => console.log(value))
+      this.getAddress()
     } ,
+    methods : {
+      ...mapActions(['getAddress'])
+    }
   }
 </script>
 
