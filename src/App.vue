@@ -17,9 +17,10 @@
     } ,
     mounted() {
       this.getAddress()
+      this.getUserInfo()
     } ,
     methods : {
-      ...mapActions(['getAddress'])
+      ...mapActions(['getAddress','getUserInfo'])
     }
   }
 </script>

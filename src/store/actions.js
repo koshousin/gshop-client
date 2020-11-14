@@ -2,12 +2,14 @@
 import {
   RECEIVE_SHOPS ,
   RECEIVE_TYPES ,
-  RECEIVE_ADDRESS
+  RECEIVE_ADDRESS ,
+  RECEIVE_USER_INFO
 } from './mutation-types'
 import {
   reqAddress ,
   reqShopList ,
-  reqFoodTypes
+  reqFoodTypes ,
+  reqUserInfo
 } from '../api'
 
 export default {
@@ -38,5 +40,21 @@ export default {
       commit(RECEIVE_SHOPS ,{shops} )
     }
   } ,
+  // 同步保存用户信息
+  saveUser({commit} , userInfo){
+    commit(RECEIVE_USER_INFO , {userInfo})
+  } ,
+  // 异步浏览器会话自动登录
+  async getUserInfo({commit}) {
+    const result = await reqUserInfo();
+    if(result.code === 0){  // 自动登陆成功
+      // 将信息保存到 userInfo
+      const userInfo = result.data;
+      commit(RECEIVE_USER_INFO , {userInfo} )
+      // 跳转到主界面
+    } else {
+      //
+    }
+  }
 
 }

@@ -6,5 +6,6 @@ export default {
   longitude : 118.1718 ,
   address : {},
   types : [] ,    // 分类数组
-  shops : []   // 商家数组
+  shops : [] ,  // 商家数组
+  userInfo : {}  , // 用户信息
 }
