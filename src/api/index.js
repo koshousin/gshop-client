@@ -22,3 +22,12 @@ export const reqLoginSms = (phone , code) => ajax(BASE_URL + '/login_sms' , {pho
 export const reqUserInfo = () => ajax(BASE_URL + '/userinfo')
 // 10、用户登出
 export const reqLogout = () => ajax(BASE_URL + 'logout')
+/*
+*     以下三种请求无需添加 api ，前台即可处理
+*/
+// 11、获取商家信息
+export const reqShopInfo = () => ajax('/info')
+// 12、获取评价信息
+export const reqShopRatings = () => ajax('/ratings')
+// 13、获取食品信息
+export const reqShopGoods = () => ajax('/goods')

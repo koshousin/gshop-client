@@ -9,7 +9,7 @@
   import {mapActions} from 'vuex'
 
   import FootGuide from "./components/FootGuide/FootGuide";
-  import {reqFoodTypes} from './api'
+  // import {reqFoodTypes} from './api'
 
   export default {
     components : {

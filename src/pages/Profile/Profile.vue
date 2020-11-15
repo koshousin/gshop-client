@@ -92,16 +92,32 @@
           </div>
         </a>
       </section>
+      <section class="profile_my_order border-1px" >
+        <mt-button @click="logout" type="danger" style="width: 100%" v-if="userInfo['_id']">退出登录</mt-button>
+      </section>
     </section>
 </template>
 
 <script>
+  import {MessageBox , Toast} from 'mint-ui'
   import {mapState} from 'vuex'
   export default {
     name: "Profile" ,
     computed : {
       ...mapState(['userInfo'])
-    }
+    } ,
+    methods : {
+      logout(){
+        MessageBox.confirm('确定要退出吗？').then(
+          action =>  {
+            this.$store.dispatch('logout')
+            Toast({message :'退出登录成功！',duration : 1000})
+          } ,   // 确定
+          action => {}      // 取消
+        )
+      }
+    } ,
+    //
   }
 </script>
 
