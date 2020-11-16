@@ -1,4 +1,4 @@
-
+import Vue from 'vue'
 import {
   RECEIVE_SHOPS ,
   RECEIVE_ADDRESS ,
@@ -7,7 +7,9 @@ import {
   RESET_USER_INFO ,
   RECEIVE_GOODS ,
   RECEIVE_INFO ,
-  RECEIVE_RATINGS
+  RECEIVE_RATINGS ,
+  INCREMENT_FOOD_COUNT ,
+  DECREMENT_FOOD_COUNT
 } from './mutation-types'
 
 
@@ -35,5 +37,21 @@ export default {
   },
   [RECEIVE_GOODS](state , {goods}) {
     state.goods = goods
+  } ,
+  [DECREMENT_FOOD_COUNT](state , {food}){
+     if(food.count){
+       food.count--
+     }
+  } ,
+  [INCREMENT_FOOD_COUNT](state , {food}){
+    if(!food.count){
+      //food.count = 1    //新增属性没有数据绑定效果
+      /*
+      * 对象，属性名，属性值
+      */
+      Vue.set(food , 'count' ,1)    // 让新增的属性也有数据绑定
+    } else {
+      food.count++
+    }
   }
 }

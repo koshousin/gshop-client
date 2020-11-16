@@ -7,7 +7,9 @@ import {
   RESET_USER_INFO ,
   RECEIVE_GOODS ,
   RECEIVE_RATINGS ,
-  RECEIVE_INFO
+  RECEIVE_INFO ,
+  INCREMENT_FOOD_COUNT ,
+  DECREMENT_FOOD_COUNT
 } from './mutation-types'
 import {
   reqAddress ,
@@ -21,6 +23,14 @@ import {
 } from '../api'
 
 export default {
+  // 同步更新 food 中的食物数量
+  updateFoodCount({commit , state} , {food , flag}){
+    if(flag){
+      commit(INCREMENT_FOOD_COUNT , {food})
+    } else {
+      commit(DECREMENT_FOOD_COUNT , {food})
+    }
+  } ,
   // 异步获取地址
   async getAddress({commit,state}){
     const {latitude , longitude} = state;
@@ -96,11 +106,13 @@ export default {
   } ,
 
   // 异步获取商品列表
-  async getShopGoods({commit}){
+  async getShopGoods({commit} , cb){
     const result = await reqShopGoods();
     if(result.code === 0){
       const goods  = result.data
       commit(RECEIVE_GOODS, {goods})
+      // 数据更新了
+      cb && cb()
     }
   }
 
