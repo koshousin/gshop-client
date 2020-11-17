@@ -21,7 +21,7 @@
             <span class="old" v-if="food['oldPrice']">￥{{food['oldPrice']}}</span>
           </div>
           <div class="cartcontrol-wrapper">
-            cartcontrol 组件
+            <CartControl :food="food" />
           </div>
         </div>
       </div>
@@ -31,8 +31,10 @@
 </template>
 
 <script>
+  import CartControl from "../CartControl/CartControl";
   export default {
     name: "FoodDetail" ,
+    components : {CartControl},
     props : {
       food : Object
     } ,

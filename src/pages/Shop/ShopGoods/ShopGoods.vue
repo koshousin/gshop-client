@@ -22,7 +22,7 @@
                   @click="showFood(food)" :key="index">
                 <div class="icon">
                   <img width="57" height="57"
-                       :src="food['icon']">
+                       :src="food['icon']" >
                 </div>
                 <div class="content">
                   <h2 class="name">{{food.name}}</h2>
@@ -43,6 +43,7 @@
           </li>
         </ul>
       </div>
+      <ShopCart />
     </div>
     <FoodDetail ref="food" :food="food" />
   </div>
@@ -53,10 +54,12 @@
   import BScroll from 'better-scroll'
 
   import CartControl from "../../../components/CartControl/CartControl";
-  import FoodDetail from "../../../components/Food/FoodDetail";
+  import FoodDetail from "../../../components/FoodDetail/FoodDetail";
+  import ShopCart from "../../../components/ShopCart/ShopCart";
   export default {
     name: "ShopGoods" ,
     mounted (){
+      // 把 给action 派发一个回调
       this.$store.dispatch('getShopGoods',() => {
         this.$nextTick( () => {
           this._initScroll()
@@ -105,10 +108,8 @@
         })
         // 给右侧列表绑定 scroll
         this.foodScroll.on('scroll' , ({x , y}) => {
-          // console.log(x , '-' , y)
           this.scrollY = Math.abs(y)
         })
-        // foodScroll.on('scrollEnd' , ())
       } ,
       // 初始化tops
       _initTops (){
@@ -123,7 +124,7 @@
         })
         // 更新状态
         this.tops = tops;
-        console.log(tops)
+        // console.log(tops)
       } ,
       // 设置右侧食物列表的 clientHeight
       changeHeight(index){
@@ -142,7 +143,8 @@
     } ,
     components : {
       CartControl ,
-      FoodDetail
+      FoodDetail ,
+      ShopCart
     }
   }
 </script>

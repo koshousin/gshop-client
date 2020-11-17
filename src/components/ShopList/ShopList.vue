@@ -2,7 +2,7 @@
   <div class="shop_container">
     <ul class="shop_list" v-if="shops.length">
       <li class="shop_li border-1px" v-for="(shop,index) in shops" :key="index"
-      @click="$router.push('/shop')">
+      @click="$router.push(`/shop`)">
         <a>
           <div class="shop_left">
             <img class="shop_img" :src="baseImageUrl">
@@ -39,6 +39,7 @@
         </a>
       </li>
     </ul>
+<!--  等待加载的 SVG   -->
     <ul v-else>
       <li v-for="(item , index) in 6">
         <img src="./imgs/shop_back.svg" alt="">

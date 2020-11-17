@@ -70,7 +70,7 @@
     name: "Login" ,
     data() {
       return {
-        loginWay : true ,  // true 代表短信登录，false 代表密码登录
+        loginWay : true ,   // true 代表短信登录，false 代表密码登录
         computeTime : 0,    // 计时的时间
         phone : '' ,        // 手机号码
         code : '' ,         // 手机短信验证码

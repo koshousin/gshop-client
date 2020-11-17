@@ -9,7 +9,8 @@ import {
   RECEIVE_INFO ,
   RECEIVE_RATINGS ,
   INCREMENT_FOOD_COUNT ,
-  DECREMENT_FOOD_COUNT
+  DECREMENT_FOOD_COUNT ,
+  CLEAR_CART
 } from './mutation-types'
 
 
@@ -41,6 +42,11 @@ export default {
   [DECREMENT_FOOD_COUNT](state , {food}){
      if(food.count){
        food.count--
+       // 如果食品数量为0 . 则从购物车中移除
+       if(food.count === 0){
+         let index = state.cartFoods.indexOf(food)
+         state.cartFoods.splice(index,1)
+       }
      }
   } ,
   [INCREMENT_FOOD_COUNT](state , {food}){
@@ -50,8 +56,18 @@ export default {
       * 对象，属性名，属性值
       */
       Vue.set(food , 'count' ,1)    // 让新增的属性也有数据绑定
+      // 将 food 添加到 cartFoods 中
+      state.cartFoods.push(food)
     } else {
       food.count++
     }
+  } ,
+  [CLEAR_CART] (state) {
+    // 先将食物的count 更改为 0
+    state.cartFoods.forEach( item => {
+      item.count = 0
+    })
+    // 移除购物车所有购物项
+    state.cartFoods = []
   }
 }
