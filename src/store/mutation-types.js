@@ -18,8 +18,12 @@ export const RECEIVE_RATINGS = 'receive_ratings'
 
 export const RECEIVE_INFO = 'receive_info'
 
+export const RECEIVE_SEARCH_SHOP = 'receive_search_shop'
+
 export const INCREMENT_FOOD_COUNT = 'increment_food_count'
 
 export const DECREMENT_FOOD_COUNT = 'decrement_food_count'
 
 export const CLEAR_CART = 'clear_cart'
+
+

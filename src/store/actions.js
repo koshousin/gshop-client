@@ -10,7 +10,8 @@ import {
   RECEIVE_INFO ,
   INCREMENT_FOOD_COUNT ,
   DECREMENT_FOOD_COUNT ,
-  CLEAR_CART
+  CLEAR_CART ,
+  RECEIVE_SEARCH_SHOP
 } from './mutation-types'
 import {
   reqAddress ,
@@ -20,7 +21,8 @@ import {
   reqLogout ,
   reqShopGoods ,
   reqShopInfo ,
-  reqShopRatings
+  reqShopRatings ,
+  reqSearchShops
 } from '../api'
 
 export default {
@@ -35,6 +37,10 @@ export default {
   // 同步清空购物车
   clearCart({commit} , state){
     commit(CLEAR_CART)
+  } ,
+  // 同步保存用户信息
+  saveUser({commit} , userInfo){
+    commit(RECEIVE_USER_INFO , {userInfo})
   } ,
   // 异步获取地址
   async getAddress({commit,state}){
@@ -63,12 +69,6 @@ export default {
       commit(RECEIVE_SHOPS ,{shops} )
     }
   } ,
-
-  // 同步保存用户信息
-  saveUser({commit} , userInfo){
-    commit(RECEIVE_USER_INFO , {userInfo})
-  } ,
-
   // 异步浏览器会话自动登录
   async getUserInfo({commit}) {
     const result = await reqUserInfo();
@@ -81,7 +81,6 @@ export default {
       //
     }
   },
-
   // 异步退出登录
   async logout({commit}){
     const result = await reqLogout();
@@ -89,7 +88,6 @@ export default {
       commit(RESET_USER_INFO)
     }
   } ,
-
   // 异步获取商家评价
   async getShopRatings({commit} ,cb){
     const result = await reqShopRatings();
@@ -100,7 +98,6 @@ export default {
       cb && cb()
     }
   } ,
-
   // 异步获取商家信息
   async getShopInfo({commit}){
     const result = await reqShopInfo();
@@ -110,7 +107,6 @@ export default {
       commit(RECEIVE_INFO, {info})
     }
   } ,
-
   // 异步获取商品列表
   async getShopGoods({commit} , cb){
     const result = await reqShopGoods();
@@ -120,6 +116,14 @@ export default {
       // 数据更新了
       cb && cb()
     }
+  } ,
+  // 异步搜索店铺
+  async getSearchShop({commit} , {geohash , keyword} , cb){
+    // debugger
+    const result =  await reqSearchShops( keyword , geohash )
+    if(result.code === 0){
+      const searchShop = result.data
+      commit(RECEIVE_SEARCH_SHOP , {searchShop})
+    }
   }
-
 }

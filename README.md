@@ -104,6 +104,13 @@
 + 原因:由于创建了多个 BScroll 实例
 + 解决：实例单例（单一实例）
 
+# day 8
++ 完成了搜索的逻辑以及商家信息页面
++ 评论页面评论时间的格式化（moment）,moment 文件略大，可以采用date-fns
++ 应用优化
+    - 图片懒加载 vue-lazyLoad
+    - 组件懒加载 components = () => import 'xxx' from './xx'
+
 
 
 

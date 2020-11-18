@@ -2,7 +2,7 @@
 <template>
   <div class="shop-header">
     <nav class="shop-nav" :class="{backgroundImage : `url(${info['bgImg']})`}">
-      <a class="back" @click="$router.replace('/home')">
+      <a class="back" @click="$router.back()">
         <i class="iconfont icon-arrow_left"></i>
       </a>
     </nav>

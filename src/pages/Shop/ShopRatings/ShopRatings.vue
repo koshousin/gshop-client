@@ -69,7 +69,7 @@
                       :class="rate['rateType'] === 0 ? 'icon-thumb_up' : 'icon-thumb_down' "></span>
                 <span class="item" v-for="(food,index) in rate['recommend']" :key="index">{{food}}</span>
               </div>
-              <div class="time">{{rate['rateTime']}}</div>
+              <div class="time">{{rate['rateTime'] | date-format}}</div>
             </div>
           </li>
         </ul>
